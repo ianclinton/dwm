@@ -66,10 +66,17 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-c", "-m",  dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
+static const char *vol_mute_cmd[]  = { "volume_mute.sh", NULL };
+static const char *vol_down_cmd[]  = { "volume_down.sh", NULL };
+static const char *vol_up_cmd[]  = { "volume_up.sh", NULL };
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+        { 0,             		XK_F8, 	   spawn,          {.v = vol_mute_cmd } },
+        { 0,             		XK_F9,     spawn,          {.v = vol_down_cmd } },
+        { 0,             		XK_F10,    spawn,          {.v = vol_up_cmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
